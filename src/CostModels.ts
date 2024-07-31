@@ -1,4 +1,4 @@
-import { canBeUInteger, forceBigUInt, CanBeUInteger } from "./utils/ints";
+import { canBeUInteger, CanBeUInteger, cborNumber } from "./utils/ints";
 import { defineNormalProperty, defineReadOnlyProperty, hasOwn, isObject } from "@harmoniclabs/obj-utils";
 import { CanBeCborString, Cbor, CborArray, CborBytes, CborMap, CborMapEntry, CborObj, CborString, CborUInt, forceCborString } from "@harmoniclabs/cbor";
 
@@ -12,7 +12,7 @@ export type CostModelPlutusV1Array = CanBeUInteger[] & { length: 166 };
 
 export type CostModelPlutusV2Array = CanBeUInteger[] & { length: 175 };
 
-export type CostModelPlutusV3Array = CanBeUInteger[] & { length: 223 };
+export type CostModelPlutusV3Array = CanBeUInteger[] & { length: 251 };
 
 export interface CostModels {
     PlutusScriptV1?: AnyV1CostModel,
@@ -368,240 +368,257 @@ export const defaultV2Costs: CostModelPlutusV2 = Object.freeze({
 } as CostModelPlutusV2);
 
 export const defaultV3Costs: CostModelPlutusV3 = Object.freeze({
-    "addInteger-cpu-arguments-intercept": 205665,
-    "addInteger-cpu-arguments-slope": 812,
+    "addInteger-cpu-arguments-intercept": 100788,
+    "addInteger-cpu-arguments-slope": 420,
     "addInteger-memory-arguments-intercept": 1,
     "addInteger-memory-arguments-slope": 1,
     "appendByteString-cpu-arguments-intercept": 1000,
-    "appendByteString-cpu-arguments-slope": 571,
+    "appendByteString-cpu-arguments-slope": 173,
     "appendByteString-memory-arguments-intercept": 0,
     "appendByteString-memory-arguments-slope": 1,
     "appendString-cpu-arguments-intercept": 1000,
-    "appendString-cpu-arguments-slope": 24177,
+    "appendString-cpu-arguments-slope": 59957,
     "appendString-memory-arguments-intercept": 4,
     "appendString-memory-arguments-slope": 1,
-    "bData-cpu-arguments": 1000,
+    "bData-cpu-arguments": 11183,
     "bData-memory-arguments": 32,
-    "blake2b_256-cpu-arguments-intercept": 117366,
-    "blake2b_256-cpu-arguments-slope": 10475,
+    "blake2b_256-cpu-arguments-intercept": 201305,
+    "blake2b_256-cpu-arguments-slope": 8356,
     "blake2b_256-memory-arguments": 4,
-    "cekApplyCost-exBudgetCPU": 23000,
+    "cekApplyCost-exBudgetCPU": 16000,
     "cekApplyCost-exBudgetMemory": 100,
-    "cekBuiltinCost-exBudgetCPU": 23000,
+    "cekBuiltinCost-exBudgetCPU": 16000,
     "cekBuiltinCost-exBudgetMemory": 100,
-    "cekConstCost-exBudgetCPU": 23000,
+    "cekConstCost-exBudgetCPU": 16000,
     "cekConstCost-exBudgetMemory": 100,
-    "cekDelayCost-exBudgetCPU": 23000,
+    "cekDelayCost-exBudgetCPU": 16000,
     "cekDelayCost-exBudgetMemory": 100,
-    "cekForceCost-exBudgetCPU": 23000,
+    "cekForceCost-exBudgetCPU": 16000,
     "cekForceCost-exBudgetMemory": 100,
-    "cekLamCost-exBudgetCPU": 23000,
+    "cekLamCost-exBudgetCPU": 16000,
     "cekLamCost-exBudgetMemory": 100,
     "cekStartupCost-exBudgetCPU": 100,
     "cekStartupCost-exBudgetMemory": 100,
-    "cekVarCost-exBudgetCPU": 23000,
+    "cekVarCost-exBudgetCPU": 16000,
     "cekVarCost-exBudgetMemory": 100,
-    "chooseData-cpu-arguments": 19537,
+    "chooseData-cpu-arguments": 94375,
     "chooseData-memory-arguments": 32,
-    "chooseList-cpu-arguments": 175354,
+    "chooseList-cpu-arguments": 132994,
     "chooseList-memory-arguments": 32,
-    "chooseUnit-cpu-arguments": 46417,
+    "chooseUnit-cpu-arguments": 61462,
     "chooseUnit-memory-arguments": 4,
-    "consByteString-cpu-arguments-intercept": 221973,
-    "consByteString-cpu-arguments-slope": 511,
+    "consByteString-cpu-arguments-intercept": 72010,
+    "consByteString-cpu-arguments-slope": 178,
     "consByteString-memory-arguments-intercept": 0,
     "consByteString-memory-arguments-slope": 1,
-    "constrData-cpu-arguments": 89141,
+    "constrData-cpu-arguments": 22151,
     "constrData-memory-arguments": 32,
-    "decodeUtf8-cpu-arguments-intercept": 497525,
-    "decodeUtf8-cpu-arguments-slope": 14068,
+    "decodeUtf8-cpu-arguments-intercept": 91189,
+    "decodeUtf8-cpu-arguments-slope": 769,
     "decodeUtf8-memory-arguments-intercept": 4,
     "decodeUtf8-memory-arguments-slope": 2,
-    "divideInteger-cpu-arguments-constant": 196500,
-    "divideInteger-cpu-arguments-model-arguments-intercept": 453240,
-    "divideInteger-cpu-arguments-model-arguments-slope": 220,
+    "divideInteger-cpu-arguments-constant": 85848,
+    "divideInteger-cpu-arguments-model-arguments-c00": 123203,
+    "divideInteger-cpu-arguments-model-arguments-c01": 7305,
+    "divideInteger-cpu-arguments-model-arguments-c02": -900,
+    "divideInteger-cpu-arguments-model-arguments-c10": 1716,
+    "divideInteger-cpu-arguments-model-arguments-c11": 549,
+    "divideInteger-cpu-arguments-model-arguments-c20": 57,
+    "divideInteger-cpu-arguments-model-arguments-minimum": 453240,
     "divideInteger-memory-arguments-intercept": 0,
     "divideInteger-memory-arguments-minimum": 1,
     "divideInteger-memory-arguments-slope": 1,
     "encodeUtf8-cpu-arguments-intercept": 1000,
-    "encodeUtf8-cpu-arguments-slope": 28662,
+    "encodeUtf8-cpu-arguments-slope": 42921,
     "encodeUtf8-memory-arguments-intercept": 4,
     "encodeUtf8-memory-arguments-slope": 2,
-    "equalsByteString-cpu-arguments-constant": 245000,
-    "equalsByteString-cpu-arguments-intercept": 216773,
-    "equalsByteString-cpu-arguments-slope": 62,
+    "equalsByteString-cpu-arguments-constant": 24548,
+    "equalsByteString-cpu-arguments-intercept": 29498,
+    "equalsByteString-cpu-arguments-slope": 38,
     "equalsByteString-memory-arguments": 1,
-    "equalsData-cpu-arguments-intercept": 1060367,
-    "equalsData-cpu-arguments-slope": 12586,
+    "equalsData-cpu-arguments-intercept": 898148,
+    "equalsData-cpu-arguments-slope": 27279,
     "equalsData-memory-arguments": 1,
-    "equalsInteger-cpu-arguments-intercept": 208512,
-    "equalsInteger-cpu-arguments-slope": 421,
+    "equalsInteger-cpu-arguments-intercept": 51775,
+    "equalsInteger-cpu-arguments-slope": 558,
     "equalsInteger-memory-arguments": 1,
-    "equalsString-cpu-arguments-constant": 187000,
+    "equalsString-cpu-arguments-constant": 39184,
     "equalsString-cpu-arguments-intercept": 1000,
-    "equalsString-cpu-arguments-slope": 52998,
+    "equalsString-cpu-arguments-slope": 60594,
     "equalsString-memory-arguments": 1,
-    "fstPair-cpu-arguments": 80436,
+    "fstPair-cpu-arguments": 141895,
     "fstPair-memory-arguments": 32,
-    "headList-cpu-arguments": 43249,
+    "headList-cpu-arguments": 83150,
     "headList-memory-arguments": 32,
-    "iData-cpu-arguments": 1000,
+    "iData-cpu-arguments": 15299,
     "iData-memory-arguments": 32,
-    "ifThenElse-cpu-arguments": 80556,
+    "ifThenElse-cpu-arguments": 76049,
     "ifThenElse-memory-arguments": 1,
-    "indexByteString-cpu-arguments": 57667,
+    "indexByteString-cpu-arguments": 13169,
     "indexByteString-memory-arguments": 4,
-    "lengthOfByteString-cpu-arguments": 1000,
+    "lengthOfByteString-cpu-arguments": 22100,
     "lengthOfByteString-memory-arguments": 10,
-    "lessThanByteString-cpu-arguments-intercept": 197145,
-    "lessThanByteString-cpu-arguments-slope": 156,
+    "lessThanByteString-cpu-arguments-intercept": 28999,
+    "lessThanByteString-cpu-arguments-slope": 74,
     "lessThanByteString-memory-arguments": 1,
-    "lessThanEqualsByteString-cpu-arguments-intercept": 197145,
-    "lessThanEqualsByteString-cpu-arguments-slope": 156,
+    "lessThanEqualsByteString-cpu-arguments-intercept": 28999,
+    "lessThanEqualsByteString-cpu-arguments-slope": 74,
     "lessThanEqualsByteString-memory-arguments": 1,
-    "lessThanEqualsInteger-cpu-arguments-intercept": 204924,
-    "lessThanEqualsInteger-cpu-arguments-slope": 473,
+    "lessThanEqualsInteger-cpu-arguments-intercept": 43285,
+    "lessThanEqualsInteger-cpu-arguments-slope": 552,
     "lessThanEqualsInteger-memory-arguments": 1,
-    "lessThanInteger-cpu-arguments-intercept": 208896,
-    "lessThanInteger-cpu-arguments-slope": 511,
+    "lessThanInteger-cpu-arguments-intercept": 44749,
+    "lessThanInteger-cpu-arguments-slope": 541,
     "lessThanInteger-memory-arguments": 1,
-    "listData-cpu-arguments": 52467,
+    "listData-cpu-arguments": 33852,
     "listData-memory-arguments": 32,
-    "mapData-cpu-arguments": 64832,
+    "mapData-cpu-arguments": 68246,
     "mapData-memory-arguments": 32,
-    "mkCons-cpu-arguments": 65493,
+    "mkCons-cpu-arguments": 72362,
     "mkCons-memory-arguments": 32,
-    "mkNilData-cpu-arguments": 22558,
+    "mkNilData-cpu-arguments": 7243,
     "mkNilData-memory-arguments": 32,
-    "mkNilPairData-cpu-arguments": 16563,
+    "mkNilPairData-cpu-arguments": 7391,
     "mkNilPairData-memory-arguments": 32,
-    "mkPairData-cpu-arguments": 76511,
+    "mkPairData-cpu-arguments": 11546,
     "mkPairData-memory-arguments": 32,
-    "modInteger-cpu-arguments-constant": 196500,
-    "modInteger-cpu-arguments-model-arguments-intercept": 453240,
-    "modInteger-cpu-arguments-model-arguments-slope": 220,
+    "modInteger-cpu-arguments-constant": 85848,
+    "modInteger-cpu-arguments-model-arguments-c00": 123203,
+    "modInteger-cpu-arguments-model-arguments-c01": 7305,
+    "modInteger-cpu-arguments-model-arguments-c02": -900,
+    "modInteger-cpu-arguments-model-arguments-c10": 1716,
+    "modInteger-cpu-arguments-model-arguments-c11": 549,
+    "modInteger-cpu-arguments-model-arguments-c20": 57,
+    "modInteger-cpu-arguments-model-arguments-minimum": 85848,
     "modInteger-memory-arguments-intercept": 0,
-    "modInteger-memory-arguments-minimum": 1,
     "modInteger-memory-arguments-slope": 1,
-    "multiplyInteger-cpu-arguments-intercept": 69522,
-    "multiplyInteger-cpu-arguments-slope": 11687,
+    "multiplyInteger-cpu-arguments-intercept": 90434,
+    "multiplyInteger-cpu-arguments-slope": 519,
     "multiplyInteger-memory-arguments-intercept": 0,
     "multiplyInteger-memory-arguments-slope": 1,
-    "nullList-cpu-arguments": 60091,
+    "nullList-cpu-arguments": 74433,
     "nullList-memory-arguments": 32,
-    "quotientInteger-cpu-arguments-constant": 196500,
-    "quotientInteger-cpu-arguments-model-arguments-intercept": 453240,
-    "quotientInteger-cpu-arguments-model-arguments-slope": 220,
+    "quotientInteger-cpu-arguments-constant": 85848,
+    "quotientInteger-cpu-arguments-model-arguments-c00": 123203,
+    "quotientInteger-cpu-arguments-model-arguments-c01": 7305,
+    "quotientInteger-cpu-arguments-model-arguments-c02": -900,
+    "quotientInteger-cpu-arguments-model-arguments-c10": 1716,
+    "quotientInteger-cpu-arguments-model-arguments-c11": 549,
+    "quotientInteger-cpu-arguments-model-arguments-c20": 57,
+    "quotientInteger-cpu-arguments-model-arguments-minimum": 85848,
     "quotientInteger-memory-arguments-intercept": 0,
     "quotientInteger-memory-arguments-minimum": 1,
     "quotientInteger-memory-arguments-slope": 1,
-    "remainderInteger-cpu-arguments-constant": 196500,
-    "remainderInteger-cpu-arguments-model-arguments-intercept": 453240,
-    "remainderInteger-cpu-arguments-model-arguments-slope": 220,
+    "remainderInteger-cpu-arguments-constant": 85848,
+    "remainderInteger-cpu-arguments-model-arguments-c00": 123203,
+    "remainderInteger-cpu-arguments-model-arguments-c01": 7305,
+    "remainderInteger-cpu-arguments-model-arguments-c02": -900,
+    "remainderInteger-cpu-arguments-model-arguments-c10": 1716,
+    "remainderInteger-cpu-arguments-model-arguments-c11": 549,
+    "remainderInteger-cpu-arguments-model-arguments-c20": 57,
+    "remainderInteger-cpu-arguments-model-arguments-minimum": 85848,
     "remainderInteger-memory-arguments-intercept": 0,
-    "remainderInteger-memory-arguments-minimum": 1,
     "remainderInteger-memory-arguments-slope": 1,
-    "serialiseData-cpu-arguments-intercept": 1159724,
-    "serialiseData-cpu-arguments-slope": 392670,
+    "serialiseData-cpu-arguments-intercept": 955506,
+    "serialiseData-cpu-arguments-slope": 213312,
     "serialiseData-memory-arguments-intercept": 0,
     "serialiseData-memory-arguments-slope": 2,
-    "sha2_256-cpu-arguments-intercept": 806990,
-    "sha2_256-cpu-arguments-slope": 30482,
+    "sha2_256-cpu-arguments-intercept": 270652,
+    "sha2_256-cpu-arguments-slope": 22588,
     "sha2_256-memory-arguments": 4,
-    "sha3_256-cpu-arguments-intercept": 1927926,
-    "sha3_256-cpu-arguments-slope": 82523,
+    "sha3_256-cpu-arguments-intercept": 1457325,
+    "sha3_256-cpu-arguments-slope": 64566,
     "sha3_256-memory-arguments": 4,
-    "sliceByteString-cpu-arguments-intercept": 265318,
-    "sliceByteString-cpu-arguments-slope": 0,
+    "sliceByteString-cpu-arguments-intercept": 20467,
+    "sliceByteString-cpu-arguments-slope": 1,
     "sliceByteString-memory-arguments-intercept": 4,
     "sliceByteString-memory-arguments-slope": 0,
-    "sndPair-cpu-arguments": 85931,
+    "sndPair-cpu-arguments": 141992,
     "sndPair-memory-arguments": 32,
-    "subtractInteger-cpu-arguments-intercept": 205665,
-    "subtractInteger-cpu-arguments-slope": 812,
+    "subtractInteger-cpu-arguments-intercept": 100788,
+    "subtractInteger-cpu-arguments-slope": 420,
     "subtractInteger-memory-arguments-intercept": 1,
     "subtractInteger-memory-arguments-slope": 1,
-    "tailList-cpu-arguments": 41182,
+    "tailList-cpu-arguments": 81663,
     "tailList-memory-arguments": 32,
-    "trace-cpu-arguments": 212342,
+    "trace-cpu-arguments": 59498,
     "trace-memory-arguments": 32,
-    "unBData-cpu-arguments": 31220,
+    "unBData-cpu-arguments": 20142,
     "unBData-memory-arguments": 32,
-    "unConstrData-cpu-arguments": 32696,
+    "unConstrData-cpu-arguments": 24588,
     "unConstrData-memory-arguments": 32,
-    "unIData-cpu-arguments": 43357,
+    "unIData-cpu-arguments": 20744,
     "unIData-memory-arguments": 32,
-    "unListData-cpu-arguments": 32247,
+    "unListData-cpu-arguments": 25933,
     "unListData-memory-arguments": 32,
-    "unMapData-cpu-arguments": 38314,
+    "unMapData-cpu-arguments": 24623,
     "unMapData-memory-arguments": 32,
-    "verifyEcdsaSecp256k1Signature-cpu-arguments": 35892428,
+    "verifyEcdsaSecp256k1Signature-cpu-arguments": 43053543,
     "verifyEcdsaSecp256k1Signature-memory-arguments": 10,
-    "verifyEd25519Signature-cpu-arguments-intercept": 57996947,
-    "verifyEd25519Signature-cpu-arguments-slope": 18975,
+    "verifyEd25519Signature-cpu-arguments-intercept": 53384111,
+    "verifyEd25519Signature-cpu-arguments-slope": 14333,
     "verifyEd25519Signature-memory-arguments": 10,
-    "verifySchnorrSecp256k1Signature-cpu-arguments-intercept": 38887044,
-    "verifySchnorrSecp256k1Signature-cpu-arguments-slope": 32947,
+    "verifySchnorrSecp256k1Signature-cpu-arguments-intercept": 43574283,
+    "verifySchnorrSecp256k1Signature-cpu-arguments-slope": 26308,
     "verifySchnorrSecp256k1Signature-memory-arguments": 10,
-    // TODO: update with real costs as soon as I can find them somewhere
-    "cekConstrCost-exBudgetCPU": 23000,
+    "cekConstrCost-exBudgetCPU": 16000,
     "cekConstrCost-exBudgetMemory": 100,
-    "cekCaseCost-exBudgetCPU": 23000,
+    "cekCaseCost-exBudgetCPU": 16000,
     "cekCaseCost-exBudgetMemory": 100,
-    "bls12_381_G1_add-cpu-arguments": 832808,
+    "bls12_381_G1_add-cpu-arguments": 962335,
     "bls12_381_G1_add-memory-arguments": 18,
-    "bls12_381_G1_compress-cpu-arguments": 3209094,
+    "bls12_381_G1_compress-cpu-arguments": 2780678,
     "bls12_381_G1_compress-memory-arguments": 6,
-    "bls12_381_G1_equal-cpu-arguments": 331451,
+    "bls12_381_G1_equal-cpu-arguments": 442008,
     "bls12_381_G1_equal-memory-arguments": 1,
-    "bls12_381_G1_hashToGroup-cpu-arguments-intercept": 65990684,
-    "bls12_381_G1_hashToGroup-cpu-arguments-slope": 23097,
+    "bls12_381_G1_hashToGroup-cpu-arguments-intercept": 52538055,
+    "bls12_381_G1_hashToGroup-cpu-arguments-slope": 3756,
     "bls12_381_G1_hashToGroup-memory-arguments": 18,
-    "bls12_381_G1_neg-cpu-arguments": 114242,
+    "bls12_381_G1_neg-cpu-arguments": 267929,
     "bls12_381_G1_neg-memory-arguments": 18,
-    "bls12_381_G1_scalarMul-cpu-arguments-intercept": 94393407,
-    "bls12_381_G1_scalarMul-cpu-arguments-slope": 87060,
+    "bls12_381_G1_scalarMul-cpu-arguments-intercept": 76433006,
+    "bls12_381_G1_scalarMul-cpu-arguments-slope": 8868,
     "bls12_381_G1_scalarMul-memory-arguments": 18,
-    "bls12_381_G1_uncompress-cpu-arguments": 16420089,
+    "bls12_381_G1_uncompress-cpu-arguments": 52948122,
     "bls12_381_G1_uncompress-memory-arguments": 18,
-    "bls12_381_G2_add-cpu-arguments": 2145798,
+    "bls12_381_G2_add-cpu-arguments": 1995836,
     "bls12_381_G2_add-memory-arguments": 36,
-    "bls12_381_G2_compress-cpu-arguments": 3795345,
+    "bls12_381_G2_compress-cpu-arguments": 3227919,
     "bls12_381_G2_compress-memory-arguments": 12,
-    "bls12_381_G2_equal-cpu-arguments": 889023,
+    "bls12_381_G2_equal-cpu-arguments": 901022,
     "bls12_381_G2_equal-memory-arguments": 1,
-    "bls12_381_G2_hashToGroup-cpu-arguments-intercept": 204237282,
-    "bls12_381_G2_hashToGroup-cpu-arguments-slope": 23271,
+    "bls12_381_G2_hashToGroup-cpu-arguments-intercept": 166917843,
+    "bls12_381_G2_hashToGroup-cpu-arguments-slope": 4307,
     "bls12_381_G2_hashToGroup-memory-arguments": 36,
-    "bls12_381_G2_neg-cpu-arguments": 129165,
+    "bls12_381_G2_neg-cpu-arguments": 284546,
     "bls12_381_G2_neg-memory-arguments": 36,
-    "bls12_381_G2_scalarMul-cpu-arguments-intercept": 189977790,
-    "bls12_381_G2_scalarMul-cpu-arguments-slope": 85902,
+    "bls12_381_G2_scalarMul-cpu-arguments-intercept": 158221314,
+    "bls12_381_G2_scalarMul-cpu-arguments-slope": 26549,
     "bls12_381_G2_scalarMul-memory-arguments": 36,
-    "bls12_381_G2_uncompress-cpu-arguments": 33012864,
+    "bls12_381_G2_uncompress-cpu-arguments": 74698472,
     "bls12_381_G2_uncompress-memory-arguments": 36,
-    "bls12_381_finalVerify-cpu-arguments": 388443360,
+    "bls12_381_finalVerify-cpu-arguments": 333849714,
     "bls12_381_finalVerify-memory-arguments": 1,
-    "bls12_381_millerLoop-cpu-arguments": 401885761,
+    "bls12_381_millerLoop-cpu-arguments": 254006273,
     "bls12_381_millerLoop-memory-arguments": 72,
-    "bls12_381_mulMlResult-cpu-arguments": 2331379,
+    "bls12_381_mulMlResult-cpu-arguments": 2174038,
     "bls12_381_mulMlResult-memory-arguments": 72,
-    "keccak_256-cpu-arguments-intercept": 1927926,
-    "keccak_256-cpu-arguments-slope": 82523,
+    "keccak_256-cpu-arguments-intercept": 2261318,
+    "keccak_256-cpu-arguments-slope": 64571,
     "keccak_256-memory-arguments": 4,
-    "blake2b_224-cpu-arguments-intercept": 117366,
-    "blake2b_224-cpu-arguments-slope": 10475,
+    "blake2b_224-cpu-arguments-intercept": 201305,
+    "blake2b_224-cpu-arguments-slope": 8356,
     "blake2b_224-memory-arguments": 4,
-    "integerToByteString-cpu-arguments-c0": 1292075,
-    "integerToByteString-cpu-arguments-c1": 24469,
-    "integerToByteString-cpu-arguments-c2": 74,
+    "integerToByteString-cpu-arguments-c0": 1293828,
+    "integerToByteString-cpu-arguments-c1": 28716,
+    "integerToByteString-cpu-arguments-c2": 63,
     "integerToByteString-memory-arguments-intercept": 0,
     "integerToByteString-memory-arguments-slope": 1,
-    "byteStringToInteger-cpu-arguments-c0": 936157,
-    "byteStringToInteger-cpu-arguments-c1": 49601,
-    "byteStringToInteger-cpu-arguments-c2": 237,
+    "byteStringToInteger-cpu-arguments-c0": 1006041,
+    "byteStringToInteger-cpu-arguments-c1": 43623,
+    "byteStringToInteger-cpu-arguments-c2": 251,
     "byteStringToInteger-memory-arguments-intercept": 0,
-    "byteStringToInteger-memory-arguments-slope": 30_000_000_001,
+    "byteStringToInteger-memory-arguments-slope": 1
 } as CostModelPlutusV3);
 
 export const costModelV1Keys: (keyof CostModelPlutusV1)[] = Object.freeze( Object.keys( defaultV1Costs ) ) as any;
@@ -636,12 +653,67 @@ export function costModelV1ToFakeV2( costmdlsV1: AnyV1CostModel ): CostModelPlut
 
 export function costModelV2ToFakeV3( costmdlsV2: AnyV2CostModel ): CostModelPlutusV3
 {    
-    const costs = toCostModelV2( costmdlsV2 );
+    const costs = { ...toCostModelV2( costmdlsV2 ) } as unknown as CostModelPlutusV3;
 
     function makeItALot( key: keyof CostModelPlutusV3 )
     {
         defineReadOnlyProperty( costs, key, a_lot );
     }
+
+    const costKeys = Object.keys( costs );
+
+    for( const k of costKeys )
+    {
+        if(
+            k.startsWith("divideInteger") ||
+            k.startsWith("modInteger") ||
+            k.startsWith("quotientInteger") ||
+            k.startsWith("remainderInteger")
+        )
+        {
+            delete (costs as any)[k];
+        }
+    }
+
+    costs["divideInteger-cpu-arguments-constant"] = defaultV3Costs["divideInteger-cpu-arguments-constant"];
+    costs["divideInteger-cpu-arguments-model-arguments-c00"] = defaultV3Costs["divideInteger-cpu-arguments-model-arguments-c00"];
+    costs["divideInteger-cpu-arguments-model-arguments-c01"] = defaultV3Costs["divideInteger-cpu-arguments-model-arguments-c01"];
+    costs["divideInteger-cpu-arguments-model-arguments-c02"] = defaultV3Costs["divideInteger-cpu-arguments-model-arguments-c02"];
+    costs["divideInteger-cpu-arguments-model-arguments-c10"] = defaultV3Costs["divideInteger-cpu-arguments-model-arguments-c10"];
+    costs["divideInteger-cpu-arguments-model-arguments-c11"] = defaultV3Costs["divideInteger-cpu-arguments-model-arguments-c11"];
+    costs["divideInteger-cpu-arguments-model-arguments-c20"] = defaultV3Costs["divideInteger-cpu-arguments-model-arguments-c20"];
+    costs["divideInteger-cpu-arguments-model-arguments-minimum"] = defaultV3Costs["divideInteger-cpu-arguments-model-arguments-minimum"];
+    costs["modInteger-cpu-arguments-constant"] = defaultV3Costs["modInteger-cpu-arguments-constant"];
+    costs["modInteger-cpu-arguments-model-arguments-c00"] = defaultV3Costs["modInteger-cpu-arguments-model-arguments-c00"];
+    costs["modInteger-cpu-arguments-model-arguments-c01"] = defaultV3Costs["modInteger-cpu-arguments-model-arguments-c01"];
+    costs["modInteger-cpu-arguments-model-arguments-c02"] = defaultV3Costs["modInteger-cpu-arguments-model-arguments-c02"];
+    costs["modInteger-cpu-arguments-model-arguments-c10"] = defaultV3Costs["modInteger-cpu-arguments-model-arguments-c10"];
+    costs["modInteger-cpu-arguments-model-arguments-c11"] = defaultV3Costs["modInteger-cpu-arguments-model-arguments-c11"];
+    costs["modInteger-cpu-arguments-model-arguments-c20"] = defaultV3Costs["modInteger-cpu-arguments-model-arguments-c20"];
+    costs["modInteger-cpu-arguments-model-arguments-minimum"] = defaultV3Costs["modInteger-cpu-arguments-model-arguments-minimum"];
+    costs["modInteger-memory-arguments-intercept"] = defaultV3Costs["modInteger-memory-arguments-intercept"];
+    costs["modInteger-memory-arguments-slope"] = defaultV3Costs["modInteger-memory-arguments-slope"];
+    costs["quotientInteger-cpu-arguments-constant"] = defaultV3Costs["quotientInteger-cpu-arguments-constant"];
+    costs["quotientInteger-cpu-arguments-model-arguments-c00"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-c00"];
+    costs["quotientInteger-cpu-arguments-model-arguments-c01"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-c01"];
+    costs["quotientInteger-cpu-arguments-model-arguments-c02"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-c02"];
+    costs["quotientInteger-cpu-arguments-model-arguments-c10"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-c10"];
+    costs["quotientInteger-cpu-arguments-model-arguments-c11"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-c11"];
+    costs["quotientInteger-cpu-arguments-model-arguments-c20"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-c20"];
+    costs["quotientInteger-cpu-arguments-model-arguments-minimum"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-minimum"];
+    costs["quotientInteger-memory-arguments-intercept"] = defaultV3Costs["quotientInteger-memory-arguments-intercept"];
+    costs["quotientInteger-memory-arguments-minimum"] = defaultV3Costs["quotientInteger-memory-arguments-minimum"];
+    costs["quotientInteger-memory-arguments-slope"] = defaultV3Costs["quotientInteger-memory-arguments-slope"];
+    costs["remainderInteger-cpu-arguments-constant"] = defaultV3Costs["remainderInteger-cpu-arguments-constant"];
+    costs["remainderInteger-cpu-arguments-model-arguments-c00"] = defaultV3Costs["remainderInteger-cpu-arguments-model-arguments-c00"];
+    costs["remainderInteger-cpu-arguments-model-arguments-c01"] = defaultV3Costs["remainderInteger-cpu-arguments-model-arguments-c01"];
+    costs["remainderInteger-cpu-arguments-model-arguments-c02"] = defaultV3Costs["remainderInteger-cpu-arguments-model-arguments-c02"];
+    costs["remainderInteger-cpu-arguments-model-arguments-c10"] = defaultV3Costs["remainderInteger-cpu-arguments-model-arguments-c10"];
+    costs["remainderInteger-cpu-arguments-model-arguments-c11"] = defaultV3Costs["remainderInteger-cpu-arguments-model-arguments-c11"];
+    costs["remainderInteger-cpu-arguments-model-arguments-c20"] = defaultV3Costs["remainderInteger-cpu-arguments-model-arguments-c20"];
+    costs["remainderInteger-cpu-arguments-model-arguments-minimum"] = defaultV3Costs["remainderInteger-cpu-arguments-model-arguments-minimum"];
+    costs["remainderInteger-memory-arguments-intercept"] = defaultV3Costs["remainderInteger-memory-arguments-intercept"];
+    costs["remainderInteger-memory-arguments-slope"] = defaultV3Costs["remainderInteger-memory-arguments-slope"];
     
     makeItALot("cekConstrCost-exBudgetCPU");
     makeItALot("cekConstrCost-exBudgetMemory");
@@ -807,17 +879,17 @@ export function costModelsToCborObj( costmdls: CostModels ): CborMap
         PlutusScriptV1 === undefined ? undefined :
         {
             k: new CborUInt( 0 ),
-            v: new CborArray( toCostModelArrV1( PlutusScriptV1 ).map( n => new CborUInt( forceBigUInt( n ) ) ) )
+            v: new CborArray( toCostModelArrV1( PlutusScriptV1 ).map( cborNumber ) )
         },
         PlutusScriptV2 === undefined ? undefined :
         {
             k: new CborUInt( 1 ),
-            v: new CborArray( toCostModelArrV2( PlutusScriptV2 ).map( n => new CborUInt( forceBigUInt( n ) ) ) )
+            v: new CborArray( toCostModelArrV2( PlutusScriptV2 ).map( cborNumber ) )
         },
         PlutusScriptV3 === undefined ? undefined :
         {
             k: new CborUInt( 2 ),
-            v: new CborArray( toCostModelArrV3( PlutusScriptV3 ).map( n => new CborUInt( forceBigUInt( n ) ) ) )
+            v: new CborArray( toCostModelArrV3( PlutusScriptV3 ).map( cborNumber ) )
         }
     ].filter( elem => elem !== undefined ) as CborMapEntry[])
 }
@@ -909,7 +981,7 @@ export function costModelsToLanguageViewCbor( costmdls: CostModels, opts: CostMo
                     Cbor.encode(
                         new CborArray(
                             toCostModelArrV1( PlutusScriptV1 as any )
-                            .map( n => new CborUInt( forceBigUInt( n ) ) ),
+                            .map( cborNumber ),
                             { indefinite: true }
                         )
                     ).toBuffer()
@@ -918,16 +990,21 @@ export function costModelsToLanguageViewCbor( costmdls: CostModels, opts: CostMo
             opts.mustHaveV2 ? 
             {
                 k: new CborUInt(1),
-                v: new CborArray( toCostModelArrV2( PlutusScriptV2 as any ).map( n => new CborUInt( forceBigUInt( n ) ) ) )
+                v: new CborArray( toCostModelArrV2( PlutusScriptV2 as any ).map( cborNumber ) )
             } : undefined,
             opts.mustHaveV3 ? 
             {
                 k: new CborUInt(2),
-                v: new CborArray( toCostModelArrV3( PlutusScriptV3 as any ).map( n => new CborUInt( forceBigUInt( n ) ) ) )
+                v: new CborArray( toCostModelArrV3( PlutusScriptV3 as any ).map( cborNumber ) )
             } : undefined
         ].filter( elem => elem !== undefined ) as CborMapEntry[])
     )
 }
+
+function typedStartsWith<Start extends string>( str: string, start: Start): str is `${Start}${string}`
+{
+    return start.startsWith( start );
+} 
 
 export function costModelsToJson( costmdls: CostModels )
 {
@@ -943,7 +1020,7 @@ export function costModelsToJson( costmdls: CostModels )
         for(let i = 0; i < n; i++)
         {
             defineReadOnlyProperty(
-                pv1, ks[i], forceBigUInt( _pv1[ks[i]] ).toString()
+                pv1, ks[i], BigInt( _pv1[ks[i]] ).toString()
             )
         }
     }
@@ -956,7 +1033,7 @@ export function costModelsToJson( costmdls: CostModels )
         for(let i = 0; i < n; i++)
         {
             defineReadOnlyProperty(
-                pv2, ks[i], forceBigUInt( _pv2[ks[i]] ).toString()
+                pv2, ks[i], BigInt( _pv2[ks[i]] ).toString()
             )
         }
     }
@@ -964,12 +1041,13 @@ export function costModelsToJson( costmdls: CostModels )
     const pv3 = {};
     if( _pv3 !== undefined )
     {
-        const ks = Object.keys( _pv3 ) as (keyof CostModelPlutusV2)[];
+        const ks = Object.keys( _pv3 ) as (keyof CostModelPlutusV3)[];
         const n = ks.length;
         for(let i = 0; i < n; i++)
         {
+            const k = ks[i];
             defineReadOnlyProperty(
-                pv3, ks[i], forceBigUInt( _pv3[ks[i]] ).toString()
+                pv3, k, BigInt( _pv3[k] ).toString()
             )
         }
     }
@@ -997,7 +1075,7 @@ export function toCostModelV1( v1: AnyV1CostModel ): CostModelPlutusV1
         defineReadOnlyProperty(
             result,
             costModelV1Keys[i],
-            forceBigUInt( v1[i] )
+            BigInt( v1[i] )
         );
     }
 
@@ -1020,7 +1098,7 @@ export function toCostModelV2( v2: AnyV2CostModel ): CostModelPlutusV2
         defineNormalProperty(
             result,
             costModelV2Keys[i],
-            forceBigUInt( v2[i] )
+            BigInt( v2[i] )
         );
     }
 
@@ -1033,9 +1111,10 @@ export function toCostModelV3( v3: AnyV3CostModel ): CostModelPlutusV3
 
     const result = {};
 
-    if( v3.length < 223 )
+    if( v3.length < 251 )
     throw new Error(
-        "impossible to convert cost model v3 array to object; not enough arguments; arguments found in total: " + v3.length.toString()
+        "impossible to convert cost model v3 array to object; not enough arguments; arguments found in total: "
+        + v3.length.toString()
     );
     
     for( let i = 0; i < costModelV3Keys.length; i++ )
@@ -1043,7 +1122,7 @@ export function toCostModelV3( v3: AnyV3CostModel ): CostModelPlutusV3
         defineNormalProperty(
             result,
             costModelV3Keys[i],
-            forceBigUInt( v3[i] )
+            BigInt( v3[i] )
         );
     }
 
@@ -1464,8 +1543,13 @@ export function toCostModelArrV3( v3: AnyV3CostModel ): CostModelPlutusV3Array
         v3["decodeUtf8-memory-arguments-intercept"],
         v3["decodeUtf8-memory-arguments-slope"],
         v3["divideInteger-cpu-arguments-constant"],
-        v3["divideInteger-cpu-arguments-model-arguments-intercept"],
-        v3["divideInteger-cpu-arguments-model-arguments-slope"],
+        v3["divideInteger-cpu-arguments-model-arguments-c00"],
+        v3["divideInteger-cpu-arguments-model-arguments-c01"],
+        v3["divideInteger-cpu-arguments-model-arguments-c02"],
+        v3["divideInteger-cpu-arguments-model-arguments-c10"],
+        v3["divideInteger-cpu-arguments-model-arguments-c11"],
+        v3["divideInteger-cpu-arguments-model-arguments-c20"],
+        v3["divideInteger-cpu-arguments-model-arguments-minimum"],
         v3["divideInteger-memory-arguments-intercept"],
         v3["divideInteger-memory-arguments-minimum"],
         v3["divideInteger-memory-arguments-slope"],
@@ -1524,10 +1608,14 @@ export function toCostModelArrV3( v3: AnyV3CostModel ): CostModelPlutusV3Array
         v3["mkPairData-cpu-arguments"],
         v3["mkPairData-memory-arguments"],
         v3["modInteger-cpu-arguments-constant"],
-        v3["modInteger-cpu-arguments-model-arguments-intercept"],
-        v3["modInteger-cpu-arguments-model-arguments-slope"],
+        v3["modInteger-cpu-arguments-model-arguments-c00"],
+        v3["modInteger-cpu-arguments-model-arguments-c01"],
+        v3["modInteger-cpu-arguments-model-arguments-c02"],
+        v3["modInteger-cpu-arguments-model-arguments-c10"],
+        v3["modInteger-cpu-arguments-model-arguments-c11"],
+        v3["modInteger-cpu-arguments-model-arguments-c20"],
+        v3["modInteger-cpu-arguments-model-arguments-minimum"],
         v3["modInteger-memory-arguments-intercept"],
-        v3["modInteger-memory-arguments-minimum"],
         v3["modInteger-memory-arguments-slope"],
         v3["multiplyInteger-cpu-arguments-intercept"],
         v3["multiplyInteger-cpu-arguments-slope"],
@@ -1536,16 +1624,25 @@ export function toCostModelArrV3( v3: AnyV3CostModel ): CostModelPlutusV3Array
         v3["nullList-cpu-arguments"],
         v3["nullList-memory-arguments"],
         v3["quotientInteger-cpu-arguments-constant"],
-        v3["quotientInteger-cpu-arguments-model-arguments-intercept"],
-        v3["quotientInteger-cpu-arguments-model-arguments-slope"],
+        v3["quotientInteger-cpu-arguments-model-arguments-c00"],
+        v3["quotientInteger-cpu-arguments-model-arguments-c01"],
+        v3["quotientInteger-cpu-arguments-model-arguments-c02"],
+        v3["quotientInteger-cpu-arguments-model-arguments-c10"],
+        v3["quotientInteger-cpu-arguments-model-arguments-c11"],
+        v3["quotientInteger-cpu-arguments-model-arguments-c20"],
+        v3["quotientInteger-cpu-arguments-model-arguments-minimum"],
         v3["quotientInteger-memory-arguments-intercept"],
         v3["quotientInteger-memory-arguments-minimum"],
         v3["quotientInteger-memory-arguments-slope"],
         v3["remainderInteger-cpu-arguments-constant"],
-        v3["remainderInteger-cpu-arguments-model-arguments-intercept"],
-        v3["remainderInteger-cpu-arguments-model-arguments-slope"],
+        v3["remainderInteger-cpu-arguments-model-arguments-c00"],
+        v3["remainderInteger-cpu-arguments-model-arguments-c01"],
+        v3["remainderInteger-cpu-arguments-model-arguments-c02"],
+        v3["remainderInteger-cpu-arguments-model-arguments-c10"],
+        v3["remainderInteger-cpu-arguments-model-arguments-c11"],
+        v3["remainderInteger-cpu-arguments-model-arguments-c20"],
+        v3["remainderInteger-cpu-arguments-model-arguments-minimum"],
         v3["remainderInteger-memory-arguments-intercept"],
-        v3["remainderInteger-memory-arguments-minimum"],
         v3["remainderInteger-memory-arguments-slope"],
         v3["serialiseData-cpu-arguments-intercept"],
         v3["serialiseData-cpu-arguments-slope"],
@@ -1646,8 +1743,8 @@ export function toCostModelArrV3( v3: AnyV3CostModel ): CostModelPlutusV3Array
         v3["byteStringToInteger-cpu-arguments-c1"],
         v3["byteStringToInteger-cpu-arguments-c2"],
         v3["byteStringToInteger-memory-arguments-intercept"],
-        v3["byteStringToInteger-memory-arguments-slope"],
-    ] as any);
+        v3["byteStringToInteger-memory-arguments-slope"]
+    ]) as any;
 }
 
 export interface CostModelPlutusV1 {
@@ -1672,6 +1769,10 @@ export interface CostModelPlutusV1 {
     "cekApplyCost-exBudgetMemory": CanBeUInteger,
     "cekBuiltinCost-exBudgetCPU": CanBeUInteger,
     "cekBuiltinCost-exBudgetMemory": CanBeUInteger,
+    "cekStartupCost-exBudgetCPU": CanBeUInteger,
+    "cekStartupCost-exBudgetMemory": CanBeUInteger,
+    "cekVarCost-exBudgetCPU": CanBeUInteger,
+    "cekVarCost-exBudgetMemory": CanBeUInteger,
     "cekConstCost-exBudgetCPU": CanBeUInteger,
     "cekConstCost-exBudgetMemory": CanBeUInteger,
     "cekDelayCost-exBudgetCPU": CanBeUInteger,
@@ -1680,10 +1781,6 @@ export interface CostModelPlutusV1 {
     "cekForceCost-exBudgetMemory": CanBeUInteger,
     "cekLamCost-exBudgetCPU": CanBeUInteger,
     "cekLamCost-exBudgetMemory": CanBeUInteger,
-    "cekStartupCost-exBudgetCPU": CanBeUInteger,
-    "cekStartupCost-exBudgetMemory": CanBeUInteger,
-    "cekVarCost-exBudgetCPU": CanBeUInteger,
-    "cekVarCost-exBudgetMemory": CanBeUInteger,
     "chooseData-cpu-arguments": CanBeUInteger,
     "chooseData-memory-arguments": CanBeUInteger,
     "chooseList-cpu-arguments": CanBeUInteger,
@@ -1998,7 +2095,7 @@ export interface CostModelPlutusV2 {
     "verifySchnorrSecp256k1Signature-memory-arguments": CanBeUInteger
 }
 
-// CAN NOT extend CostModelPlutusV2 because ORDER CAHNGES
+// CAN NOT extend CostModelPlutusV2 because ORDER CHANGES
 export interface CostModelPlutusV3 {
     "addInteger-cpu-arguments-intercept": CanBeUInteger,
     "addInteger-cpu-arguments-slope": CanBeUInteger,
@@ -2050,8 +2147,13 @@ export interface CostModelPlutusV3 {
     "decodeUtf8-memory-arguments-intercept": CanBeUInteger,
     "decodeUtf8-memory-arguments-slope": CanBeUInteger,
     "divideInteger-cpu-arguments-constant": CanBeUInteger,
-    "divideInteger-cpu-arguments-model-arguments-intercept": CanBeUInteger,
-    "divideInteger-cpu-arguments-model-arguments-slope": CanBeUInteger,
+    "divideInteger-cpu-arguments-model-arguments-c00": CanBeUInteger,
+    "divideInteger-cpu-arguments-model-arguments-c01": CanBeUInteger,
+    "divideInteger-cpu-arguments-model-arguments-c02": CanBeUInteger,
+    "divideInteger-cpu-arguments-model-arguments-c10": CanBeUInteger,
+    "divideInteger-cpu-arguments-model-arguments-c11": CanBeUInteger,
+    "divideInteger-cpu-arguments-model-arguments-c20": CanBeUInteger,
+    "divideInteger-cpu-arguments-model-arguments-minimum": CanBeUInteger,
     "divideInteger-memory-arguments-intercept": CanBeUInteger,
     "divideInteger-memory-arguments-minimum": CanBeUInteger,
     "divideInteger-memory-arguments-slope": CanBeUInteger,
@@ -2110,10 +2212,14 @@ export interface CostModelPlutusV3 {
     "mkPairData-cpu-arguments": CanBeUInteger,
     "mkPairData-memory-arguments": CanBeUInteger,
     "modInteger-cpu-arguments-constant": CanBeUInteger,
-    "modInteger-cpu-arguments-model-arguments-intercept": CanBeUInteger,
-    "modInteger-cpu-arguments-model-arguments-slope": CanBeUInteger,
+    "modInteger-cpu-arguments-model-arguments-c00": CanBeUInteger,
+    "modInteger-cpu-arguments-model-arguments-c01": CanBeUInteger,
+    "modInteger-cpu-arguments-model-arguments-c02": CanBeUInteger,
+    "modInteger-cpu-arguments-model-arguments-c10": CanBeUInteger,
+    "modInteger-cpu-arguments-model-arguments-c11": CanBeUInteger,
+    "modInteger-cpu-arguments-model-arguments-c20": CanBeUInteger,
+    "modInteger-cpu-arguments-model-arguments-minimum": CanBeUInteger,
     "modInteger-memory-arguments-intercept": CanBeUInteger,
-    "modInteger-memory-arguments-minimum": CanBeUInteger,
     "modInteger-memory-arguments-slope": CanBeUInteger,
     "multiplyInteger-cpu-arguments-intercept": CanBeUInteger,
     "multiplyInteger-cpu-arguments-slope": CanBeUInteger,
@@ -2122,16 +2228,25 @@ export interface CostModelPlutusV3 {
     "nullList-cpu-arguments": CanBeUInteger,
     "nullList-memory-arguments": CanBeUInteger,
     "quotientInteger-cpu-arguments-constant": CanBeUInteger,
-    "quotientInteger-cpu-arguments-model-arguments-intercept": CanBeUInteger,
-    "quotientInteger-cpu-arguments-model-arguments-slope": CanBeUInteger,
+    "quotientInteger-cpu-arguments-model-arguments-c00": CanBeUInteger,
+    "quotientInteger-cpu-arguments-model-arguments-c01": CanBeUInteger,
+    "quotientInteger-cpu-arguments-model-arguments-c02": CanBeUInteger,
+    "quotientInteger-cpu-arguments-model-arguments-c10": CanBeUInteger,
+    "quotientInteger-cpu-arguments-model-arguments-c11": CanBeUInteger,
+    "quotientInteger-cpu-arguments-model-arguments-c20": CanBeUInteger,
+    "quotientInteger-cpu-arguments-model-arguments-minimum": CanBeUInteger,
     "quotientInteger-memory-arguments-intercept": CanBeUInteger,
     "quotientInteger-memory-arguments-minimum": CanBeUInteger,
     "quotientInteger-memory-arguments-slope": CanBeUInteger,
     "remainderInteger-cpu-arguments-constant": CanBeUInteger,
-    "remainderInteger-cpu-arguments-model-arguments-intercept": CanBeUInteger,
-    "remainderInteger-cpu-arguments-model-arguments-slope": CanBeUInteger,
+    "remainderInteger-cpu-arguments-model-arguments-c00": CanBeUInteger,
+    "remainderInteger-cpu-arguments-model-arguments-c01": CanBeUInteger,
+    "remainderInteger-cpu-arguments-model-arguments-c02": CanBeUInteger,
+    "remainderInteger-cpu-arguments-model-arguments-c10": CanBeUInteger,
+    "remainderInteger-cpu-arguments-model-arguments-c11": CanBeUInteger,
+    "remainderInteger-cpu-arguments-model-arguments-c20": CanBeUInteger,
+    "remainderInteger-cpu-arguments-model-arguments-minimum": CanBeUInteger,
     "remainderInteger-memory-arguments-intercept": CanBeUInteger,
-    "remainderInteger-memory-arguments-minimum": CanBeUInteger,
     "remainderInteger-memory-arguments-slope": CanBeUInteger,
     "serialiseData-cpu-arguments-intercept": CanBeUInteger,
     "serialiseData-cpu-arguments-slope": CanBeUInteger,
@@ -2175,7 +2290,6 @@ export interface CostModelPlutusV3 {
     "verifySchnorrSecp256k1Signature-cpu-arguments-intercept": CanBeUInteger,
     "verifySchnorrSecp256k1Signature-cpu-arguments-slope": CanBeUInteger,
     "verifySchnorrSecp256k1Signature-memory-arguments": CanBeUInteger,
-    // conway
     "cekConstrCost-exBudgetCPU": CanBeUInteger,
     "cekConstrCost-exBudgetMemory": CanBeUInteger,
     "cekCaseCost-exBudgetCPU": CanBeUInteger,
@@ -2233,5 +2347,5 @@ export interface CostModelPlutusV3 {
     "byteStringToInteger-cpu-arguments-c1": CanBeUInteger,
     "byteStringToInteger-cpu-arguments-c2": CanBeUInteger,
     "byteStringToInteger-memory-arguments-intercept": CanBeUInteger,
-    "byteStringToInteger-memory-arguments-slope": CanBeUInteger,
+    "byteStringToInteger-memory-arguments-slope": CanBeUInteger
 }
