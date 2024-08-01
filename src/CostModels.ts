@@ -1,4 +1,4 @@
-import { canBeUInteger, CanBeUInteger, cborNumber } from "./utils/ints";
+import { canBeInteger, CanBeUInteger, cborNumber } from "./utils/ints";
 import { defineNormalProperty, defineReadOnlyProperty, hasOwn, isObject } from "@harmoniclabs/obj-utils";
 import { CanBeCborString, Cbor, CborArray, CborBytes, CborMap, CborMapEntry, CborObj, CborString, CborUInt, forceCborString } from "@harmoniclabs/cbor";
 
@@ -791,12 +791,12 @@ export function isCostModelsV1( something: any ): something is AnyV1CostModel
         Array.isArray( something ) ?
 
         // CostModelPlutusV1Array
-        something.length >= 166 && something.every( canBeUInteger ) :
+        something.length >= 166 && something.every( canBeInteger ) :
 
         // CostModelPlutusV1
         costModelV1Keys.every( k => {
             const val = something[k];
-            return val !== undefined && canBeUInteger( val ) 
+            return val !== undefined && canBeInteger( val ) 
         })
     )
 }
@@ -809,12 +809,12 @@ export function isCostModelsV2( something: any ): something is AnyV2CostModel
         Array.isArray( something ) ?
 
         // CostModelPlutusV2Array
-        something.length >= 175 && something.every( canBeUInteger ) :
+        something.length >= 175 && something.every( canBeInteger ) :
 
         // CostModelPlutusV2
         costModelV2Keys.every( k => {
             const val = something[k];
-            return val !== undefined && canBeUInteger( val ) 
+            return val !== undefined && canBeInteger( val ) 
         })
     )
 }
@@ -827,12 +827,12 @@ export function isCostModelsV3( something: any ): something is AnyV3CostModel
         Array.isArray( something ) ?
 
         // CostModelPlutusV3Array
-        something.length >= 223 && something.every( canBeUInteger ) :
+        something.length >= 251 && something.every( canBeInteger ) :
 
         // CostModelPlutusV3
         costModelV3Keys.every( k => {
             const val = something[k];
-            return val !== undefined && canBeUInteger( val ) 
+            return val !== undefined && canBeInteger( val ) 
         })
     );
 }
