@@ -1,6 +1,7 @@
 import { canBeInteger, CanBeUInteger, cborNumber } from "./utils/ints";
 import { defineNormalProperty, defineReadOnlyProperty, hasOwn, isObject } from "@harmoniclabs/obj-utils";
 import { CanBeCborString, Cbor, CborArray, CborBytes, CborMap, CborMapEntry, CborObj, CborString, CborUInt, forceCborString } from "@harmoniclabs/cbor";
+import { forceArrayish, isArrayish } from "./utils/isArrayish";
 
 export type AnyV1CostModel = CostModelPlutusV1 | CostModelPlutusV1Array;
 
@@ -1001,11 +1002,6 @@ export function costModelsToLanguageViewCbor( costmdls: CostModels, opts: CostMo
     )
 }
 
-function typedStartsWith<Start extends string>( str: string, start: Start): str is `${Start}${string}`
-{
-    return start.startsWith( start );
-} 
-
 export function costModelsToJson( costmdls: CostModels )
 {
     const _pv1 = costmdls.PlutusScriptV1 === undefined ? undefined : toCostModelV1( costmdls.PlutusScriptV1 );
@@ -1061,9 +1057,10 @@ export function costModelsToJson( costmdls: CostModels )
 
 export function toCostModelV1( v1: AnyV1CostModel ): CostModelPlutusV1
 {
+    if( isArrayish( v1 ) ) v1 = forceArrayish( v1 ) as any;
     if( !Array.isArray( v1 ) ) return v1;
 
-    const result = {};
+    const result = { ...defaultV1Costs};
 
     if( v1.length < 166 )
     throw new Error(
@@ -1084,9 +1081,10 @@ export function toCostModelV1( v1: AnyV1CostModel ): CostModelPlutusV1
 
 export function toCostModelV2( v2: AnyV2CostModel ): CostModelPlutusV2
 {
+    if( isArrayish( v2 ) ) v2 = forceArrayish( v2 ) as any;
     if( !Array.isArray( v2 ) ) return v2;
 
-    const result = {};
+    const result = { ...defaultV2Costs };
 
     if( v2.length < 175 )
     throw new Error(
@@ -1107,9 +1105,10 @@ export function toCostModelV2( v2: AnyV2CostModel ): CostModelPlutusV2
 
 export function toCostModelV3( v3: AnyV3CostModel ): CostModelPlutusV3
 {
+    if( isArrayish( v3 ) ) v3 = forceArrayish( v3 ) as any;
     if( !Array.isArray( v3 ) ) return v3;
 
-    const result = {};
+    const result = { ...defaultV3Costs};
 
     if( v3.length < 251 )
     throw new Error(
