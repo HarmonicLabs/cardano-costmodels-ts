@@ -1788,7 +1788,7 @@ export function toCostModelArrV3( v3: AnyV3CostModel ): CostModelPlutusV3Array
         v3["findFirstSetBit-memory-arguments"],
         v3["ripemd_160-cpu-arguments-intercept"],
         v3["ripemd_160-cpu-arguments-slope"],
-        v3["ripemd_160-memory-arguments"],    ]);
+        v3["ripemd_160-memory-arguments"],    ] as any);
 }
 export interface CostModelPlutusV1 {
     "addInteger-cpu-arguments-intercept": CanBeUInteger,
