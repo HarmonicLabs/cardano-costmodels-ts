@@ -13,7 +13,7 @@ export type CostModelPlutusV1Array = CanBeUInteger[] & { length: 166 };
 
 export type CostModelPlutusV2Array = CanBeUInteger[] & { length: 175 };
 
-export type CostModelPlutusV3Array = CanBeUInteger[] & { length: 251 };
+export type CostModelPlutusV3Array = CanBeUInteger[] & { length: 297 };
 
 export interface CostModels {
     PlutusScriptV1?: AnyV1CostModel,
@@ -828,7 +828,7 @@ export function isCostModelsV3( something: any ): something is AnyV3CostModel
         Array.isArray( something ) ?
 
         // CostModelPlutusV3Array
-        something.length >= 251 && something.every( canBeInteger ) :
+        something.length >= 297 && something.every( canBeInteger ) :
 
         // CostModelPlutusV3
         costModelV3Keys.every( k => {
@@ -1060,7 +1060,7 @@ export function toCostModelV1( v1: AnyV1CostModel ): CostModelPlutusV1
     if( isArrayish( v1 ) ) v1 = forceArrayish( v1 ) as any;
     if( !Array.isArray( v1 ) ) return v1;
 
-    const result = { ...defaultV1Costs};
+    const result = { ...defaultV1Costs };
 
     if( v1.length < 166 )
     throw new Error(
@@ -1110,7 +1110,7 @@ export function toCostModelV3( v3: AnyV3CostModel ): CostModelPlutusV3
 
     const result = { ...defaultV3Costs};
 
-    if( v3.length < 251 )
+    if( v3.length < 297 )
     throw new Error(
         "impossible to convert cost model v3 array to object; not enough arguments; arguments found in total: "
         + v3.length.toString()
@@ -1742,10 +1742,54 @@ export function toCostModelArrV3( v3: AnyV3CostModel ): CostModelPlutusV3Array
         v3["byteStringToInteger-cpu-arguments-c1"],
         v3["byteStringToInteger-cpu-arguments-c2"],
         v3["byteStringToInteger-memory-arguments-intercept"],
-        v3["byteStringToInteger-memory-arguments-slope"]
-    ]) as any;
+        v3["byteStringToInteger-memory-arguments-slope"],
+        v3["andByteString-cpu-arguments-intercept"],
+        v3["andByteString-cpu-arguments-slope1"],
+        v3["andByteString-cpu-arguments-slope2"],
+        v3["andByteString-memory-arguments-intercept"],
+        v3["andByteString-memory-arguments-slope"],
+        v3["orByteString-cpu-arguments-intercept"],
+        v3["orByteString-cpu-arguments-slope1"],
+        v3["orByteString-cpu-arguments-slope2"],
+        v3["orByteString-memory-arguments-intercept"],
+        v3["orByteString-memory-arguments-slope"],
+        v3["xorByteString-cpu-arguments-intercept"],
+        v3["xorByteString-cpu-arguments-slope1"],
+        v3["xorByteString-cpu-arguments-slope2"],
+        v3["xorByteString-memory-arguments-intercept"],
+        v3["xorByteString-memory-arguments-slope"],
+        v3["complementByteString-cpu-arguments-intercept"],
+        v3["complementByteString-cpu-arguments-slope"],
+        v3["complementByteString-memory-arguments-intercept"],
+        v3["complementByteString-memory-arguments-slope"],
+        v3["readBit-cpu-arguments"],
+        v3["readBit-memory-arguments"],
+        v3["writeBits-cpu-arguments-intercept"],
+        v3["writeBits-cpu-arguments-slope"],
+        v3["writeBits-memory-arguments-intercept"],
+        v3["writeBits-memory-arguments-slope"],
+        v3["replicateByte-cpu-arguments-intercept"],
+        v3["replicateByte-cpu-arguments-slope"],
+        v3["replicateByte-memory-arguments-intercept"],
+        v3["replicateByte-memory-arguments-slope"],
+        v3["shiftByteString-cpu-arguments-intercept"],
+        v3["shiftByteString-cpu-arguments-slope"],
+        v3["shiftByteString-memory-arguments-intercept"],
+        v3["shiftByteString-memory-arguments-slope"],
+        v3["rotateByteString-cpu-arguments-intercept"],
+        v3["rotateByteString-cpu-arguments-slope"],
+        v3["rotateByteString-memory-arguments-intercept"],
+        v3["rotateByteString-memory-arguments-slope"],
+        v3["countSetBits-cpu-arguments-intercept"],
+        v3["countSetBits-cpu-arguments-slope"],
+        v3["countSetBits-memory-arguments"],
+        v3["findFirstSetBit-cpu-arguments-intercept"],
+        v3["findFirstSetBit-cpu-arguments-slope"],
+        v3["findFirstSetBit-memory-arguments"],
+        v3["ripemd_160-cpu-arguments-intercept"],
+        v3["ripemd_160-cpu-arguments-slope"],
+        v3["ripemd_160-memory-arguments"],    ]);
 }
-
 export interface CostModelPlutusV1 {
     "addInteger-cpu-arguments-intercept": CanBeUInteger,
     "addInteger-cpu-arguments-slope": CanBeUInteger,
@@ -2346,5 +2390,51 @@ export interface CostModelPlutusV3 {
     "byteStringToInteger-cpu-arguments-c1": CanBeUInteger,
     "byteStringToInteger-cpu-arguments-c2": CanBeUInteger,
     "byteStringToInteger-memory-arguments-intercept": CanBeUInteger,
-    "byteStringToInteger-memory-arguments-slope": CanBeUInteger
+    "byteStringToInteger-memory-arguments-slope": CanBeUInteger,
+    "andByteString-cpu-arguments-intercept": CanBeUInteger,
+    "andByteString-cpu-arguments-slope1": CanBeUInteger,
+    "andByteString-cpu-arguments-slope2": CanBeUInteger,
+    "andByteString-memory-arguments-intercept": CanBeUInteger,
+    "andByteString-memory-arguments-slope": CanBeUInteger,
+    "orByteString-cpu-arguments-intercept": CanBeUInteger,
+    "orByteString-cpu-arguments-slope1": CanBeUInteger,
+    "orByteString-cpu-arguments-slope2": CanBeUInteger,
+    "orByteString-memory-arguments-intercept": CanBeUInteger,
+    "orByteString-memory-arguments-slope": CanBeUInteger,
+    "xorByteString-cpu-arguments-intercept": CanBeUInteger,
+    "xorByteString-cpu-arguments-slope1": CanBeUInteger,
+    "xorByteString-cpu-arguments-slope2": CanBeUInteger,
+    "xorByteString-memory-arguments-intercept": CanBeUInteger,
+    "xorByteString-memory-arguments-slope": CanBeUInteger,
+    "complementByteString-cpu-arguments-intercept": CanBeUInteger,
+    "complementByteString-cpu-arguments-slope": CanBeUInteger,
+    "complementByteString-memory-arguments-intercept": CanBeUInteger,
+    "complementByteString-memory-arguments-slope": CanBeUInteger,
+    "readBit-cpu-arguments": CanBeUInteger,
+    "readBit-memory-arguments": CanBeUInteger,
+    "writeBits-cpu-arguments-intercept": CanBeUInteger,
+    "writeBits-cpu-arguments-slope": CanBeUInteger,
+    "writeBits-memory-arguments-intercept": CanBeUInteger,
+    "writeBits-memory-arguments-slope": CanBeUInteger,
+    "replicateByte-cpu-arguments-intercept": CanBeUInteger,
+    "replicateByte-cpu-arguments-slope": CanBeUInteger,
+    "replicateByte-memory-arguments-intercept": CanBeUInteger,
+    "replicateByte-memory-arguments-slope": CanBeUInteger,
+    "shiftByteString-cpu-arguments-intercept": CanBeUInteger,
+    "shiftByteString-cpu-arguments-slope": CanBeUInteger,
+    "shiftByteString-memory-arguments-intercept": CanBeUInteger,
+    "shiftByteString-memory-arguments-slope": CanBeUInteger,
+    "rotateByteString-cpu-arguments-intercept": CanBeUInteger,
+    "rotateByteString-cpu-arguments-slope": CanBeUInteger,
+    "rotateByteString-memory-arguments-intercept": CanBeUInteger,
+    "rotateByteString-memory-arguments-slope": CanBeUInteger,
+    "countSetBits-cpu-arguments-intercept": CanBeUInteger,
+    "countSetBits-cpu-arguments-slope": CanBeUInteger,
+    "countSetBits-memory-arguments": CanBeUInteger,
+    "findFirstSetBit-cpu-arguments-intercept": CanBeUInteger,
+    "findFirstSetBit-cpu-arguments-slope": CanBeUInteger,
+    "findFirstSetBit-memory-arguments": CanBeUInteger,
+    "ripemd_160-cpu-arguments-intercept": CanBeUInteger,
+    "ripemd_160-cpu-arguments-slope": CanBeUInteger,
+    "ripemd_160-memory-arguments": CanBeUInteger
 }
