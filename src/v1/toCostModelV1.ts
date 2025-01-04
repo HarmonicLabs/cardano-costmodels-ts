@@ -11,7 +11,10 @@ export function toCostModelV1( v1: AnyV1CostModel ): CostModelPlutusV1
     if( isArrayish( v1 ) ) v1 = forceArrayish( v1 ) as any;
 
     // already a CostModelPlutusV1 object
-    if( !Array.isArray( v1 ) ) return v1;
+    if( !Array.isArray( v1 ) ) return {
+        ...defaultV1Costs,
+        ...v1
+    };
 
     const result = { ...defaultV1Costs };
 

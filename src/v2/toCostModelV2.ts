@@ -8,7 +8,10 @@ import { N_COST_MODEL_PLUTUS_V2 } from "./N_COST_MODEL_PLUTUS_V2";
 export function toCostModelV2( v2: AnyV2CostModel ): CostModelPlutusV2
 {
     if( isArrayish( v2 ) ) v2 = forceArrayish( v2 ) as any;
-    if( !Array.isArray( v2 ) ) return v2;
+    if( !Array.isArray( v2 ) ) return {
+        ...defaultV2Costs,
+        ...v2
+    };
 
     const result = { ...defaultV2Costs };
 

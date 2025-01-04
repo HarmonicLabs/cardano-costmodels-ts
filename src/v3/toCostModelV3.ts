@@ -11,7 +11,10 @@ import { toCostModelArrV3 } from "./toCostModelArrV3";
 export function toCostModelV3( v3: AnyV3CostModel ): CostModelPlutusV3
 {
     if( isArrayish( v3 ) ) v3 = forceArrayish( v3 ) as any;
-    if( !Array.isArray( v3 ) ) return v3;
+    if( !Array.isArray( v3 ) ) return {
+        ...defaultV3Costs,
+        ...v3
+    };
 
     const result = { ...defaultV3Costs } as CostModelPlutusV3;
 
