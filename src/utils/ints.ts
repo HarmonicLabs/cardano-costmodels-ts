@@ -8,7 +8,11 @@ export function canBeInteger( something: any ): something is (number | bigint)
 {
     return (
         (typeof something === "bigint" ) ||
-        (typeof something === "number" && something === Math.round( something ) )
+        (
+            typeof something === "number" &&
+            something === Math.round( something ) && // filters NaN, and non-integers
+            Math.abs( something ) !== Infinity // filters Infinity and -Infinity
+        )
     );
 }
 
