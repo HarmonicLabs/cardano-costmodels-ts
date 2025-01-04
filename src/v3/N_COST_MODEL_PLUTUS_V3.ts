@@ -1,0 +1,1 @@
+export const N_COST_MODEL_PLUTUS_V3 = 297 as const;
