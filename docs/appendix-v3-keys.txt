@@ -1,0 +1,354 @@
+# Plutus V3 cost model — preprod snapshot 2026-05-20
+# Source: blockfrost-preprod.onchainapps.io /epochs/latest/parameters
+# Total entries: 350
+
+  0  addInteger-cpu-arguments-intercept  100788
+  1  addInteger-cpu-arguments-slope  420
+  2  addInteger-memory-arguments-intercept  1
+  3  addInteger-memory-arguments-slope  1
+  4  appendByteString-cpu-arguments-intercept  1000
+  5  appendByteString-cpu-arguments-slope  173
+  6  appendByteString-memory-arguments-intercept  0
+  7  appendByteString-memory-arguments-slope  1
+  8  appendString-cpu-arguments-intercept  1000
+  9  appendString-cpu-arguments-slope  59957
+ 10  appendString-memory-arguments-intercept  4
+ 11  appendString-memory-arguments-slope  1
+ 12  bData-cpu-arguments  11183
+ 13  bData-memory-arguments  32
+ 14  blake2b_256-cpu-arguments-intercept  201305
+ 15  blake2b_256-cpu-arguments-slope  8356
+ 16  blake2b_256-memory-arguments  4
+ 17  cekApplyCost-exBudgetCPU  16000
+ 18  cekApplyCost-exBudgetMemory  100
+ 19  cekBuiltinCost-exBudgetCPU  16000
+ 20  cekBuiltinCost-exBudgetMemory  100
+ 21  cekConstCost-exBudgetCPU  16000
+ 22  cekConstCost-exBudgetMemory  100
+ 23  cekDelayCost-exBudgetCPU  16000
+ 24  cekDelayCost-exBudgetMemory  100
+ 25  cekForceCost-exBudgetCPU  16000
+ 26  cekForceCost-exBudgetMemory  100
+ 27  cekLamCost-exBudgetCPU  16000
+ 28  cekLamCost-exBudgetMemory  100
+ 29  cekStartupCost-exBudgetCPU  100
+ 30  cekStartupCost-exBudgetMemory  100
+ 31  cekVarCost-exBudgetCPU  16000
+ 32  cekVarCost-exBudgetMemory  100
+ 33  chooseData-cpu-arguments  94375
+ 34  chooseData-memory-arguments  32
+ 35  chooseList-cpu-arguments  132994
+ 36  chooseList-memory-arguments  32
+ 37  chooseUnit-cpu-arguments  61462
+ 38  chooseUnit-memory-arguments  4
+ 39  consByteString-cpu-arguments-intercept  72010
+ 40  consByteString-cpu-arguments-slope  178
+ 41  consByteString-memory-arguments-intercept  0
+ 42  consByteString-memory-arguments-slope  1
+ 43  constrData-cpu-arguments  22151
+ 44  constrData-memory-arguments  32
+ 45  decodeUtf8-cpu-arguments-intercept  91189
+ 46  decodeUtf8-cpu-arguments-slope  769
+ 47  decodeUtf8-memory-arguments-intercept  4
+ 48  decodeUtf8-memory-arguments-slope  2
+ 49  divideInteger-cpu-arguments-constant  85848
+ 50  divideInteger-cpu-arguments-model-arguments-c00  123203
+ 51  divideInteger-cpu-arguments-model-arguments-c01  7305
+ 52  divideInteger-cpu-arguments-model-arguments-c02  -900
+ 53  divideInteger-cpu-arguments-model-arguments-c10  1716
+ 54  divideInteger-cpu-arguments-model-arguments-c11  960
+ 55  divideInteger-cpu-arguments-model-arguments-c20  57
+ 56  divideInteger-cpu-arguments-model-arguments-minimum  85848
+ 57  divideInteger-memory-arguments-intercept  0
+ 58  divideInteger-memory-arguments-minimum  1
+ 59  divideInteger-memory-arguments-slope  1
+ 60  encodeUtf8-cpu-arguments-intercept  1000
+ 61  encodeUtf8-cpu-arguments-slope  42921
+ 62  encodeUtf8-memory-arguments-intercept  4
+ 63  encodeUtf8-memory-arguments-slope  2
+ 64  equalsByteString-cpu-arguments-constant  30623
+ 65  equalsByteString-cpu-arguments-intercept  28755
+ 66  equalsByteString-cpu-arguments-slope  75
+ 67  equalsByteString-memory-arguments  1
+ 68  equalsData-cpu-arguments-intercept  898148
+ 69  equalsData-cpu-arguments-slope  27279
+ 70  equalsData-memory-arguments  1
+ 71  equalsInteger-cpu-arguments-intercept  51775
+ 72  equalsInteger-cpu-arguments-slope  558
+ 73  equalsInteger-memory-arguments  1
+ 74  equalsString-cpu-arguments-constant  39184
+ 75  equalsString-cpu-arguments-intercept  1000
+ 76  equalsString-cpu-arguments-slope  60594
+ 77  equalsString-memory-arguments  1
+ 78  fstPair-cpu-arguments  141895
+ 79  fstPair-memory-arguments  32
+ 80  headList-cpu-arguments  83150
+ 81  headList-memory-arguments  32
+ 82  iData-cpu-arguments  15299
+ 83  iData-memory-arguments  32
+ 84  ifThenElse-cpu-arguments  76049
+ 85  ifThenElse-memory-arguments  1
+ 86  indexByteString-cpu-arguments  13169
+ 87  indexByteString-memory-arguments  4
+ 88  lengthOfByteString-cpu-arguments  22100
+ 89  lengthOfByteString-memory-arguments  10
+ 90  lessThanByteString-cpu-arguments-intercept  28999
+ 91  lessThanByteString-cpu-arguments-slope  74
+ 92  lessThanByteString-memory-arguments  1
+ 93  lessThanEqualsByteString-cpu-arguments-intercept  28999
+ 94  lessThanEqualsByteString-cpu-arguments-slope  74
+ 95  lessThanEqualsByteString-memory-arguments  1
+ 96  lessThanEqualsInteger-cpu-arguments-intercept  43285
+ 97  lessThanEqualsInteger-cpu-arguments-slope  552
+ 98  lessThanEqualsInteger-memory-arguments  1
+ 99  lessThanInteger-cpu-arguments-intercept  44749
+100  lessThanInteger-cpu-arguments-slope  541
+101  lessThanInteger-memory-arguments  1
+102  listData-cpu-arguments  33852
+103  listData-memory-arguments  32
+104  mapData-cpu-arguments  68246
+105  mapData-memory-arguments  32
+106  mkCons-cpu-arguments  72362
+107  mkCons-memory-arguments  32
+108  mkNilData-cpu-arguments  7243
+109  mkNilData-memory-arguments  32
+110  mkNilPairData-cpu-arguments  7391
+111  mkNilPairData-memory-arguments  32
+112  mkPairData-cpu-arguments  11546
+113  mkPairData-memory-arguments  32
+114  modInteger-cpu-arguments-constant  85848
+115  modInteger-cpu-arguments-model-arguments-c00  123203
+116  modInteger-cpu-arguments-model-arguments-c01  7305
+117  modInteger-cpu-arguments-model-arguments-c02  -900
+118  modInteger-cpu-arguments-model-arguments-c10  1716
+119  modInteger-cpu-arguments-model-arguments-c11  960
+120  modInteger-cpu-arguments-model-arguments-c20  57
+121  modInteger-cpu-arguments-model-arguments-minimum  85848
+122  modInteger-memory-arguments-intercept  0
+123  modInteger-memory-arguments-slope  1
+124  multiplyInteger-cpu-arguments-intercept  90434
+125  multiplyInteger-cpu-arguments-slope  519
+126  multiplyInteger-memory-arguments-intercept  0
+127  multiplyInteger-memory-arguments-slope  1
+128  nullList-cpu-arguments  74433
+129  nullList-memory-arguments  32
+130  quotientInteger-cpu-arguments-constant  85848
+131  quotientInteger-cpu-arguments-model-arguments-c00  123203
+132  quotientInteger-cpu-arguments-model-arguments-c01  7305
+133  quotientInteger-cpu-arguments-model-arguments-c02  -900
+134  quotientInteger-cpu-arguments-model-arguments-c10  1716
+135  quotientInteger-cpu-arguments-model-arguments-c11  960
+136  quotientInteger-cpu-arguments-model-arguments-c20  57
+137  quotientInteger-cpu-arguments-model-arguments-minimum  85848
+138  quotientInteger-memory-arguments-intercept  0
+139  quotientInteger-memory-arguments-slope  1
+140  remainderInteger-cpu-arguments-constant  1
+141  remainderInteger-cpu-arguments-model-arguments-c00  85848
+142  remainderInteger-cpu-arguments-model-arguments-c01  123203
+143  remainderInteger-cpu-arguments-model-arguments-c02  7305
+144  remainderInteger-cpu-arguments-model-arguments-c10  -900
+145  remainderInteger-cpu-arguments-model-arguments-c11  1716
+146  remainderInteger-cpu-arguments-model-arguments-c20  960
+147  remainderInteger-cpu-arguments-model-arguments-minimum  57
+148  remainderInteger-memory-arguments-intercept  85848
+149  remainderInteger-memory-arguments-minimum  0
+150  remainderInteger-memory-arguments-slope  1
+151  serialiseData-cpu-arguments-intercept  955506
+152  serialiseData-cpu-arguments-slope  213312
+153  serialiseData-memory-arguments-intercept  0
+154  serialiseData-memory-arguments-slope  2
+155  sha2_256-cpu-arguments-intercept  270652
+156  sha2_256-cpu-arguments-slope  22588
+157  sha2_256-memory-arguments  4
+158  sha3_256-cpu-arguments-intercept  1457325
+159  sha3_256-cpu-arguments-slope  64566
+160  sha3_256-memory-arguments  4
+161  sliceByteString-cpu-arguments-intercept  20467
+162  sliceByteString-cpu-arguments-slope  1
+163  sliceByteString-memory-arguments-intercept  4
+164  sliceByteString-memory-arguments-slope  0
+165  sndPair-cpu-arguments  141992
+166  sndPair-memory-arguments  32
+167  subtractInteger-cpu-arguments-intercept  100788
+168  subtractInteger-cpu-arguments-slope  420
+169  subtractInteger-memory-arguments-intercept  1
+170  subtractInteger-memory-arguments-slope  1
+171  tailList-cpu-arguments  81663
+172  tailList-memory-arguments  32
+173  trace-cpu-arguments  59498
+174  trace-memory-arguments  32
+175  unBData-cpu-arguments  20142
+176  unBData-memory-arguments  32
+177  unConstrData-cpu-arguments  24588
+178  unConstrData-memory-arguments  32
+179  unIData-cpu-arguments  20744
+180  unIData-memory-arguments  32
+181  unListData-cpu-arguments  25933
+182  unListData-memory-arguments  32
+183  unMapData-cpu-arguments  24623
+184  unMapData-memory-arguments  32
+185  verifyEcdsaSecp256k1Signature-cpu-arguments  43053543
+186  verifyEcdsaSecp256k1Signature-memory-arguments  10
+187  verifyEd25519Signature-cpu-arguments-intercept  53384111
+188  verifyEd25519Signature-cpu-arguments-slope  14333
+189  verifyEd25519Signature-memory-arguments  10
+190  verifySchnorrSecp256k1Signature-cpu-arguments-intercept  43574283
+191  verifySchnorrSecp256k1Signature-cpu-arguments-slope  26308
+192  verifySchnorrSecp256k1Signature-memory-arguments  10
+193  cekConstrCost-exBudgetCPU  16000
+194  cekConstrCost-exBudgetMemory  100
+195  cekCaseCost-exBudgetCPU  16000
+196  cekCaseCost-exBudgetMemory  100
+197  bls12_381_G1_add-cpu-arguments  962335
+198  bls12_381_G1_add-memory-arguments  18
+199  bls12_381_G1_compress-cpu-arguments  2780678
+200  bls12_381_G1_compress-memory-arguments  6
+201  bls12_381_G1_equal-cpu-arguments  442008
+202  bls12_381_G1_equal-memory-arguments  1
+203  bls12_381_G1_hashToGroup-cpu-arguments-intercept  52538055
+204  bls12_381_G1_hashToGroup-cpu-arguments-slope  3756
+205  bls12_381_G1_hashToGroup-memory-arguments  18
+206  bls12_381_G1_neg-cpu-arguments  267929
+207  bls12_381_G1_neg-memory-arguments  18
+208  bls12_381_G1_scalarMul-cpu-arguments-intercept  76433006
+209  bls12_381_G1_scalarMul-cpu-arguments-slope  8868
+210  bls12_381_G1_scalarMul-memory-arguments  18
+211  bls12_381_G1_uncompress-cpu-arguments  52948122
+212  bls12_381_G1_uncompress-memory-arguments  18
+213  bls12_381_G2_add-cpu-arguments  1995836
+214  bls12_381_G2_add-memory-arguments  36
+215  bls12_381_G2_compress-cpu-arguments  3227919
+216  bls12_381_G2_compress-memory-arguments  12
+217  bls12_381_G2_equal-cpu-arguments  901022
+218  bls12_381_G2_equal-memory-arguments  1
+219  bls12_381_G2_hashToGroup-cpu-arguments-intercept  166917843
+220  bls12_381_G2_hashToGroup-cpu-arguments-slope  4307
+221  bls12_381_G2_hashToGroup-memory-arguments  36
+222  bls12_381_G2_neg-cpu-arguments  284546
+223  bls12_381_G2_neg-memory-arguments  36
+224  bls12_381_G2_scalarMul-cpu-arguments-intercept  158221314
+225  bls12_381_G2_scalarMul-cpu-arguments-slope  26549
+226  bls12_381_G2_scalarMul-memory-arguments  36
+227  bls12_381_G2_uncompress-cpu-arguments  74698472
+228  bls12_381_G2_uncompress-memory-arguments  36
+229  bls12_381_finalVerify-cpu-arguments  333849714
+230  bls12_381_finalVerify-memory-arguments  1
+231  bls12_381_millerLoop-cpu-arguments  254006273
+232  bls12_381_millerLoop-memory-arguments  72
+233  bls12_381_mulMlResult-cpu-arguments  2174038
+234  bls12_381_mulMlResult-memory-arguments  72
+235  keccak_256-cpu-arguments-intercept  2261318
+236  keccak_256-cpu-arguments-slope  64571
+237  keccak_256-memory-arguments  4
+238  blake2b_224-cpu-arguments-intercept  207616
+239  blake2b_224-cpu-arguments-slope  8310
+240  blake2b_224-memory-arguments  4
+241  integerToByteString-cpu-arguments-c0  1293828
+242  integerToByteString-cpu-arguments-c1  28716
+243  integerToByteString-cpu-arguments-c2  63
+244  integerToByteString-memory-arguments-intercept  0
+245  integerToByteString-memory-arguments-slope  1
+246  byteStringToInteger-cpu-arguments-c0  1006041
+247  byteStringToInteger-cpu-arguments-c1  43623
+248  byteStringToInteger-cpu-arguments-c2  251
+249  byteStringToInteger-memory-arguments-intercept  0
+250  byteStringToInteger-memory-arguments-slope  1
+251  andByteString-cpu-arguments-intercept  100181
+252  andByteString-cpu-arguments-slope1  726
+253  andByteString-cpu-arguments-slope2  719
+254  andByteString-memory-arguments-intercept  0
+255  andByteString-memory-arguments-slope  1
+256  orByteString-cpu-arguments-intercept  100181
+257  orByteString-cpu-arguments-slope1  726
+258  orByteString-cpu-arguments-slope2  719
+259  orByteString-memory-arguments-intercept  0
+260  orByteString-memory-arguments-slope  1
+261  xorByteString-cpu-arguments-intercept  100181
+262  xorByteString-cpu-arguments-slope1  726
+263  xorByteString-cpu-arguments-slope2  719
+264  xorByteString-memory-arguments-intercept  0
+265  xorByteString-memory-arguments-slope  1
+266  complementByteString-cpu-arguments-intercept  107878
+267  complementByteString-cpu-arguments-slope  680
+268  complementByteString-memory-arguments-intercept  0
+269  complementByteString-memory-arguments-slope  1
+270  readBit-cpu-arguments  95336
+271  readBit-memory-arguments  1
+272  writeBits-cpu-arguments-intercept  281145
+273  writeBits-cpu-arguments-slope  18848
+274  writeBits-memory-arguments-intercept  0
+275  writeBits-memory-arguments-slope  1
+276  replicateByte-cpu-arguments-intercept  180194
+277  replicateByte-cpu-arguments-slope  159
+278  replicateByte-memory-arguments-intercept  1
+279  replicateByte-memory-arguments-slope  1
+280  shiftByteString-cpu-arguments-intercept  158519
+281  shiftByteString-cpu-arguments-slope  8942
+282  shiftByteString-memory-arguments-intercept  0
+283  shiftByteString-memory-arguments-slope  1
+284  rotateByteString-cpu-arguments-intercept  159378
+285  rotateByteString-cpu-arguments-slope  8813
+286  rotateByteString-memory-arguments-intercept  0
+287  rotateByteString-memory-arguments-slope  1
+288  countSetBits-cpu-arguments-intercept  107490
+289  countSetBits-cpu-arguments-slope  3298
+290  countSetBits-memory-arguments  1
+291  findFirstSetBit-cpu-arguments-intercept  106057
+292  findFirstSetBit-cpu-arguments-slope  655
+293  findFirstSetBit-memory-arguments  1
+294  ripemd_160-cpu-arguments-intercept  1964219
+295  ripemd_160-cpu-arguments-slope  24520
+296  ripemd_160-memory-arguments  3
+297  expModInteger-cpu-arguments-coefficient00  607153
+298  expModInteger-cpu-arguments-coefficient11  231697
+299  expModInteger-cpu-arguments-coefficient12  53144
+300  expModInteger-memory-arguments-intercept  0
+301  expModInteger-memory-arguments-slope  1
+302  dropList-cpu-arguments-intercept  116711
+303  dropList-cpu-arguments-slope  1957
+304  dropList-memory-arguments  4
+305  lengthOfArray-cpu-arguments  231883
+306  lengthOfArray-memory-arguments  10
+307  listToArray-cpu-arguments-intercept  1000
+308  listToArray-cpu-arguments-slope  24838
+309  listToArray-memory-arguments-intercept  7
+310  listToArray-memory-arguments-slope  1
+311  indexArray-cpu-arguments  232010
+312  indexArray-memory-arguments  32
+313  bls12_381_G1_multiScalarMul-cpu-arguments-intercept  321837444
+314  bls12_381_G1_multiScalarMul-cpu-arguments-slope  25087669
+315  bls12_381_G1_multiScalarMul-memory-arguments  18
+316  bls12_381_G2_multiScalarMul-cpu-arguments-intercept  617887431
+317  bls12_381_G2_multiScalarMul-cpu-arguments-slope  67302824
+318  bls12_381_G2_multiScalarMul-memory-arguments  36
+319  insertCoin-cpu-arguments-intercept  356924
+320  insertCoin-cpu-arguments-slope  18413
+321  insertCoin-memory-arguments-intercept  45
+322  insertCoin-memory-arguments-slope  21
+323  lookupCoin-cpu-arguments-intercept  219951
+324  lookupCoin-cpu-arguments-slope  9444
+325  lookupCoin-memory-arguments  1
+326  unionValue-cpu-arguments-c00  1000
+327  unionValue-cpu-arguments-c10  172116
+328  unionValue-cpu-arguments-c01  183150
+329  unionValue-cpu-arguments-c11  6
+330  unionValue-memory-arguments-intercept  24
+331  unionValue-memory-arguments-slope  21
+332  valueContains-cpu-arguments-constant  213283
+333  valueContains-cpu-arguments-model-arguments-intercept  618401
+334  valueContains-cpu-arguments-model-arguments-slope1  1998
+335  valueContains-cpu-arguments-model-arguments-slope2  28258
+336  valueContains-memory-arguments  1
+337  valueData-cpu-arguments-intercept  1000
+338  valueData-cpu-arguments-slope  38159
+339  valueData-memory-arguments-intercept  2
+340  valueData-memory-arguments-slope  22
+341  unValueData-cpu-arguments-c0  1000
+342  unValueData-cpu-arguments-c1  95933
+343  unValueData-cpu-arguments-c2  1
+344  unValueData-memory-arguments-intercept  1
+345  unValueData-memory-arguments-slope  11
+346  scaleValue-cpu-arguments-intercept  1000
+347  scaleValue-cpu-arguments-slope  277577
+348  scaleValue-memory-arguments-intercept  12
+349  scaleValue-memory-arguments-slope  21

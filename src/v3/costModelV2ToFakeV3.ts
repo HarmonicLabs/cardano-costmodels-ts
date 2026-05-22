@@ -51,7 +51,6 @@ export function costModelV2ToFakeV3( costmdlsV2: AnyV2CostModel ): CostModelPlut
     costs["quotientInteger-cpu-arguments-model-arguments-c20"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-c20"];
     costs["quotientInteger-cpu-arguments-model-arguments-minimum"] = defaultV3Costs["quotientInteger-cpu-arguments-model-arguments-minimum"];
     costs["quotientInteger-memory-arguments-intercept"] = defaultV3Costs["quotientInteger-memory-arguments-intercept"];
-    costs["quotientInteger-memory-arguments-minimum"] = defaultV3Costs["quotientInteger-memory-arguments-minimum"];
     costs["quotientInteger-memory-arguments-slope"] = defaultV3Costs["quotientInteger-memory-arguments-slope"];
     costs["remainderInteger-cpu-arguments-constant"] = defaultV3Costs["remainderInteger-cpu-arguments-constant"];
     costs["remainderInteger-cpu-arguments-model-arguments-c00"] = defaultV3Costs["remainderInteger-cpu-arguments-model-arguments-c00"];

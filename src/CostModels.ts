@@ -8,25 +8,21 @@ import { CostModelPlutusV3 } from "./v3/CostModelPlutusV3";
 import { isCostModelsV3 } from "./v3/isCostModelsV3";
 import { toCostModelArrV3 } from "./v3/toCostModelArrV3";
 import { toCostModelV3 } from "./v3/toCostModelV3";
-import { AnyV4CostModel } from "./v4/AnyV4CostModel";
-import { CostModelPlutusV4 } from "./v4/CostModelPlutusV4";
-import { isCostModelsV4 } from "./v4/isCostModelsV4";
-import { toCostModelArrV4 } from "./v4/toCostModelArrV4";
-import { toCostModelV4 } from "./v4/toCostModelV4";
+// V4 plumbing intentionally absent — see src/v4/index.ts for the deprecation
+// rationale. The 350-entry shape is what the chain currently emits as V3.
 
 export interface CostModels {
     PlutusScriptV1?: AnyV1CostModel,
     PlutusScriptV2?: AnyV2CostModel,
     PlutusScriptV3?: AnyV3CostModel,
-    PlutusScriptV4?: AnyV4CostModel,
 }
 
 export function isCostModels( something: any ): something is CostModels
 {
     if(!isObject( something )) return false;
 
-    let hasV1, hasV2, hasV3, hasV4;
-    hasV1 = hasV2 = hasV3 = hasV4 = false;
+    let hasV1, hasV2, hasV3;
+    hasV1 = hasV2 = hasV3 = false;
 
     if( hasOwn<object,"PlutusScriptV1">( something, "PlutusScriptV1" ) )
     {
@@ -46,13 +42,7 @@ export function isCostModels( something: any ): something is CostModels
         if( !isCostModelsV3( something.PlutusScriptV3 ) ) return false;
     }
 
-    if( hasOwn<object,"PlutusScriptV4">( something, "PlutusScriptV4" ) )
-    {
-        hasV4 = true;
-        if( !isCostModelsV4( something.PlutusScriptV4 ) ) return false;
-    }
-
-    if(!( hasV1 || hasV2 || hasV3 || hasV4 )) return false
+    if(!( hasV1 || hasV2 || hasV3 )) return false
 
     return true
 };
@@ -63,7 +53,6 @@ export function costModelsToCborObj( costmdls: CostModels ): CborMap
         PlutusScriptV1,
         PlutusScriptV2,
         PlutusScriptV3,
-        PlutusScriptV4,
     } = costmdls;
 
     return new CborMap([
@@ -82,11 +71,6 @@ export function costModelsToCborObj( costmdls: CostModels ): CborMap
             k: new CborUInt( 2 ),
             v: new CborArray( toCostModelArrV3( PlutusScriptV3 ).map( cborNumber ) )
         },
-        PlutusScriptV4 === undefined ? undefined :
-        {
-            k: new CborUInt( 3 ),
-            v: new CborArray( toCostModelArrV4( PlutusScriptV4 ).map( cborNumber ) )
-        }
     ].filter( elem => elem !== undefined ) as CborMapEntry[])
 }
 
@@ -127,12 +111,7 @@ export function costModelsFromCborObj( cObj: CborObj | undefined ): CostModels
                 costs, "PlutusScriptV3", toCostModelV3( (v.array.map( n => (n as CborUInt).num ) ) as any )
             );
         }
-        else if( plutusIdx === 3 )
-        {
-            defineReadOnlyProperty(
-                costs, "PlutusScriptV4", toCostModelV4( (v.array.map( n => (n as CborUInt).num ) ) as any )
-            );
-        }
+        // plutusIdx === 3 (PlutusV4) intentionally not handled — see src/v4/index.ts.
 
     });
 
@@ -143,7 +122,6 @@ export interface CostModelsToLanguageViewCborOpts {
     mustHaveV1?: boolean,
     mustHaveV2?: boolean,
     mustHaveV3?: boolean,
-    mustHaveV4?: boolean,
 }
 
 export function costModelsToLanguageViewCbor( costmdls: CostModels, opts: CostModelsToLanguageViewCborOpts ): Uint8Array
@@ -152,7 +130,6 @@ export function costModelsToLanguageViewCbor( costmdls: CostModels, opts: CostMo
         PlutusScriptV1,
         PlutusScriptV2,
         PlutusScriptV3,
-        PlutusScriptV4,
     } = costmdls;
 
     if( opts.mustHaveV1 === true && PlutusScriptV1 === undefined )
@@ -163,9 +140,6 @@ export function costModelsToLanguageViewCbor( costmdls: CostModels, opts: CostMo
 
     if( opts.mustHaveV3 === true && PlutusScriptV3 === undefined )
     throw new Error("missing required PlutusScriptV3");
-
-    if( opts.mustHaveV4 === true && PlutusScriptV4 === undefined )
-    throw new Error("missing required PlutusScriptV4");
 
     return Cbor.encode(
         new CborMap([
@@ -204,11 +178,6 @@ export function costModelsToLanguageViewCbor( costmdls: CostModels, opts: CostMo
                 k: new CborUInt(2),
                 v: new CborArray( toCostModelArrV3( PlutusScriptV3 as any ).map( cborNumber ) )
             } : undefined,
-            opts.mustHaveV4 ?
-            {
-                k: new CborUInt(3),
-                v: new CborArray( toCostModelArrV4( PlutusScriptV4 as any ).map( cborNumber ) )
-            } : undefined
         ].filter( elem => elem !== undefined ) as CborMapEntry[])
     )
 }
@@ -218,7 +187,6 @@ export function costModelsToJson( costmdls: CostModels )
     const _pv1 = costmdls.PlutusScriptV1 === undefined ? undefined : toCostModelV1( costmdls.PlutusScriptV1 );
     const _pv2 = costmdls.PlutusScriptV2 === undefined ? undefined : toCostModelV2( costmdls.PlutusScriptV2 );
     const _pv3 = costmdls.PlutusScriptV3 === undefined ? undefined : toCostModelV3( costmdls.PlutusScriptV3 );
-    const _pv4 = costmdls.PlutusScriptV4 === undefined ? undefined : toCostModelV4( costmdls.PlutusScriptV4 );
 
     const pv1 = {};
     if( _pv1 !== undefined )
@@ -260,24 +228,9 @@ export function costModelsToJson( costmdls: CostModels )
         }
     }
 
-    const pv4 = {};
-    if( _pv4 !== undefined )
-    {
-        const ks = Object.keys( _pv4 ) as (keyof CostModelPlutusV4)[];
-        const n = ks.length;
-        for(let i = 0; i < n; i++)
-        {
-            const k = ks[i];
-            defineReadOnlyProperty(
-                pv4, k, BigInt( _pv4[k] ).toString()
-            )
-        }
-    }
-
     return {
         PlutusScriptV1: pv1,
         PlutusScriptV2: pv2,
         PlutusScriptV3: pv3,
-        PlutusScriptV4: pv4,
     };
 }
