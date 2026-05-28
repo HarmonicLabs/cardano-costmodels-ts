@@ -42,9 +42,7 @@ export function isCostModels( something: any ): something is CostModels
         if( !isCostModelsV3( something.PlutusScriptV3 ) ) return false;
     }
 
-    if(!( hasV1 || hasV2 || hasV3 )) return false
-
-    return true
+    return ( hasV1 || hasV2 || hasV3 );
 };
 
 export function costModelsToCborObj( costmdls: CostModels ): CborMap
